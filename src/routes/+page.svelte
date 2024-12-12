@@ -10,6 +10,11 @@
 	];
 </script>
 
+<svelte:head>
+	<title>Seimbang-in</title>
+	<meta name="description" content="Smart Money, Balanced Money" />
+</svelte:head>
+
 <navbar class="fixed flex w-full justify-center">
 	<div class="container hidden px-4 py-4 md:block">
 		<div class="grid grid-cols-4">
