@@ -3,8 +3,9 @@
 declare global {
 	namespace App {
 		interface Locals {
-			user: import('$lib/server/auth').SessionValidationResult['user'];
+			user: any;
 			session: import('$lib/server/auth').SessionValidationResult['session'];
+			token: import('jsonwebtoken').JwtPayload | string;
 		}
 	}
 }
