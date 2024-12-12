@@ -1,15 +1,21 @@
 <script>
 	import { Button } from 'flowbite-svelte';
 
-	const items = ['Home', 'Features', 'GitHub', 'Contact'];
+	// Mengubah items menjadi objek dengan name dan url
+	const items = [
+		{ name: 'Home', url: '/' },
+		{ name: 'Features', url: '/#' },
+		{ name: 'GitHub', url: 'https://github.com/seimbang-in' },
+		{ name: 'Contact', url: '/#' }
+	];
 </script>
 
 <navbar class="fixed flex w-full justify-center">
-	<div class="container px-4 py-4">
+	<div class="container hidden px-4 py-4 md:block">
 		<div class="grid grid-cols-4">
-			{#each items as item}
+			{#each items as { name, url }}
 				<div class="flex justify-center border-r-2 p-4">
-					<a href="/item">{item}</a>
+					<a href={url}>{name}</a>
 				</div>
 			{/each}
 		</div>
@@ -28,12 +34,13 @@
 			>
 		</div>
 		<div>
+			<!-- svelte-ignore a11y_img_redundant_alt -->
 			<img src="./hero-img.png" alt="Hero Image" class="floating-img" />
 		</div>
 	</main>
 </div>
 
-<footer class="fixed bottom-4 w-full flex justify-center">
+<footer class="fixed bottom-4 flex w-full justify-center">
 	<p>© 2024 Seimbang-in. All rights reserved.</p>
 </footer>
 
