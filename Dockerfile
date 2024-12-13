@@ -1,24 +1,16 @@
-# Build stage
-FROM node:20-alpine as build
-
+FROM node:22-alpine AS builder
 WORKDIR /app
-# copy everything
+COPY package*.json ./
+RUN npm ci
 COPY . .
-# install dependencies
-RUN npm i
-# build the SvelteKit app
 RUN npm run build
+RUN npm prune --production
 
-# Run stage (separate it from the build stage, to save disk storage)
-FROM node:20-alpine
-
+FROM node:22-alpine
 WORKDIR /app
-
-# copy stuff from the build stage
-COPY --from=build /app/package*.json ./
-COPY --from=build /app/build ./
-
-# expose the app's port
+COPY --from=builder /app/build build/
+COPY --from=builder /app/node_modules node_modules/
+COPY package.json .
 EXPOSE 3000
-# run the server
-CMD ["node", "./index.js"]
+ENV NODE_ENV=production
+CMD [ "node", "build" ]
