@@ -47,7 +47,6 @@
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.38.1",
-    "flowbite-svelte-admin-dashboard": "^0.1.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.5"
   }
